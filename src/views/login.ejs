@@ -89,18 +89,23 @@
       
       <div class="panel">
         <div class="panel-body">
-          <form action="books.html" method="GET"  name="loginForm" onsubmit="return validateForm()">
+          
+          <form action="/signup/login/validate" method="POST"  name="loginForm" onsubmit="return validateForm()">
+            
             <table cellspacing="0" cellpadding="10">
               <tr>
+                <td colspan="2" ><span id="login-msg"><%=loginMsg%></span></td>
+              </tr>
+              <tr>
                 <td>User ID:</td>
-                <td><input type="text" name="firstName" id="firstName" placeholder="Enter Your Email ID"></td>
+                <td><input type="text" name="username" id="username" placeholder="Enter Your username"></td>
               </tr>
               <tr>
                 <td>Password:</td><td><input type="password" name="password" id="password" placeholder="Password"></td>
               </tr>
               <tr>
-                <td></td><td><a class="btn btn-info" href="register.html">New User</a>
-            <input class="btn btn-info" type="submit" name="submit" id="submit" onclick="document.forms['loginForm']['firstName'].value"></td>
+                <td></td><td><a class="btn btn-info" href="/signup">New User</a>
+            <input class="btn btn-info" type="submit" name="" id="submit" onclick="document.forms['loginForm']['firstName'].value"></td>
               </tr>
             </table>
           

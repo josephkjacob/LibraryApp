@@ -89,7 +89,7 @@
       
       <div class="panel">
         <div class="panel-body">
-            <form name="regForm" id="regForm" action="books.html" method="GET" onsubmit="return validateForm()">
+            <form name="regForm" id="regForm" action="/signup/register" method="POST" onsubmit="return validateForm()">
                 <table cellpadding="10" cellspacing="0">
                     <tr>
                         <td><label for="fullName"> Full Name: </label><span class="required-star">*</span></td>
@@ -122,18 +122,18 @@
                     <tr>
                         <td>Country / Location : </td>
                         <td><select name="country" id="">
-                            <option value="ind" selected>India</option>
-                            <option value="us">USA</option>
-                            <option value="germany">Germany</option>
-                            <option value="eng">England</option>
+                            <option value="India" selected>India</option>
+                            <option value="USA">USA</option>
+                            <option value="Germany">Germany</option>
+                            <option value="England">England</option>
                         </select></td>
                     </tr> 
                     <tr>
                         <td>Postal Address: </td>
                         <td><textarea name="address" id="address" cols="50" rows="3" placeholder="Your address" ></textarea></td>
                     </tr>
-                    <tr ><td colspan="2"><input type="checkbox" name="terms" id="terms"  onchange="document.getElementById('submit').disabled = !this.checked"> I have read and accept the <a href="#" class="text-dark">BookStack Privacy Policy</a> </td></tr>                     
-                    <tr><td></td><td><input type="submit" name="submit" id="submit" value="Register" class="btn btn-info" disabled></td></tr>
+                    <tr ><td colspan="2"><input type="checkbox" name="" id="terms"  onchange="document.getElementById('submit').disabled = !this.checked"> I have read and accept the <a href="#" class="text-dark">BookStack Privacy Policy</a> </td></tr>                     
+                    <tr><td></td><td><input type="submit" name="" id="submit" value="Register" class="btn btn-info" disabled></td></tr>
                 </table>
           
          
