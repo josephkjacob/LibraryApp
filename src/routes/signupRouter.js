@@ -1,8 +1,9 @@
 const express = require("express");
+const fs = require("fs");
 const signupRouter = express.Router();
 
 var users = [
-    {
+    /*{
         fullName: 'Admin',
         email: 'admin@admin.com',
         password: '12345',
@@ -11,8 +12,12 @@ var users = [
         gender: 'male',
         country: 'India',
         address: 'Great'
-    }
+    }*/
 ]
+fs.readFile("./users.json", "utf-8", (err, data) => {
+    if(err) throw err;
+    else users = JSON.parse(data);
+})
 function router(nav) {
     signupRouter.route("/")
         .get((req, res) => {
@@ -25,6 +30,7 @@ function router(nav) {
 
     signupRouter.route("/login")
         .get((req, res) => {
+            nav[nav.length - 1].title = "LogIn";
             res.render("login.ejs",
                 {
                     nav,
@@ -37,7 +43,7 @@ function router(nav) {
         .post((req, res) =>{
             var success = validateUser(req.body)
             if(success){
-
+                nav[nav.length - 1].title = "LogOut";
                 res.render("index.ejs",
                 {
                     nav,
@@ -67,6 +73,7 @@ function router(nav) {
                     nav,
                     title: "Libarary"
                 });
+                saveUsers();
         });
     return signupRouter;
 
@@ -101,4 +108,10 @@ function verifyUserExist(data){
      return exist;
 }
 
+function saveUsers(){
+    fs.writeFile("./users.json", JSON.stringify(users), "utf-8", (err) => {
+        if(err) throw err;
+        console.log("User data saved");
+    })
+}
 module.exports = router;

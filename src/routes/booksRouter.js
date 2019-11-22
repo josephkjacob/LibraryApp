@@ -86,15 +86,29 @@ function router(nav) {
                     title: 'Book Added',
                     books
                 });
-            fs.writeFile("./books.json", JSON.stringify(books), "utf-8", (err) => {
-                if (err) throw err;
-                else console.log("Successfully stored in json file");
-            })
+            saveBooks();
         });
-
+        booksRouter.route("/remove/:id")
+        .get((req, res) => {
+            var id = req.params.id;
+            books.splice(id,1);
+            res.render("books.ejs",
+            {
+                nav,
+                title: "Books",
+                books
+            })
+            saveBooks();
+        })
+        
     return booksRouter;
 }
-
+function saveBooks(){
+    fs.writeFile("./books.json", JSON.stringify(books), "utf-8", (err) => {
+        if (err) throw err;
+        else console.log("Successfully stored in json file");
+    })
+}
 
 /*module.exports = booksRouter;*/
 module.exports = router;
